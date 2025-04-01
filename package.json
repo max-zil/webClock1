@@ -1,0 +1,23 @@
+{
+  "name": "web_first_project",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/max-zil/test1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/max-zil/test1/issues"
+  },
+  "homepage": "https://github.com/max-zil/test1#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
