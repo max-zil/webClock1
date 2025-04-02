@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AM:PM Clock</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
   </head>
-  <body onload="updateClock()">
+  <body onload="updateClock()" id="origin">
     <h1>Clock:</h1>
     <h2 id="clock">00:12</h2>
+    <label>Add timer</label>
+    <button id="addTimerBtn">+</button>
     <script src="script.js"></script>
   </body>
 </html>
