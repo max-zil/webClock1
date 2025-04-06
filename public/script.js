@@ -67,5 +67,6 @@ function stopTimer(){
     alert("Timer Stopped");
     stopped = true;
     let btn1 = document.getElementById("stopBtn");
-    btn1.innerText = "Resume";    
+    let btn2 = document.getElementById("resumeBtn");
+    btn1.style.display = 'none';  
 }
