@@ -44,9 +44,7 @@ function addTimer(){
     stopBtn.addEventListener("click",function(){
         alert("Timer Stopped");
         stopped = true;
-        let btn1 = document.getElementById("stopBtn" + labelID);
-        let btn2 = document.getElementById("resumeBtn");
-        btn1.style.display = 'none';
+        stopBtn.style.display = 'none';
         clearTimeout(myTimeout);
     });
     //###Label Setup
