@@ -35,18 +35,32 @@ function addTimer(){
     let timeString = h +":" + format(m) + ":" + format(s);
     let newDiv = document.createElement("div");
     let newLabel = document.createElement("label");
-
+    //create a stop button
     let stopBtn = document.createElement("button");
     stopBtn.innerText = "Stop";
     stopBtn.id = "stopBtn" + labelID;
-
+    
+    //create a resume button
+    let resumeBtn = document.createElement("button");
+    resumeBtn.innerText = "Resume";
+    resumeBtn.id = "resumeBtn" + labelID;
+    resumeBtn.style.display = "none";
 
     stopBtn.addEventListener("click",function(){
         alert("Timer Stopped");
         stopped = true;
         stopBtn.style.display = 'none';
+        resumeBtn.style.display = 'inline';
         clearTimeout(myTimeout);
     });
+    
+
+    resumeBtn.addEventListener("click",function(){
+        stopped = false;
+        stopBtn.style.display = 'inline';
+        resumeBtn.style.display = 'none';
+        updateTimer(); 
+    })
     //###Label Setup
     //select the label id of the correct and current instance of the timer 
     let labelString = "label" + labelID;
@@ -55,6 +69,7 @@ function addTimer(){
     //###Append elements
     newDiv.appendChild(newLabel);
     newDiv.appendChild(stopBtn);
+    newDiv.appendChild(resumeBtn);
     document.getElementById("origin").appendChild(newDiv);
     
     function updateTimer(){
