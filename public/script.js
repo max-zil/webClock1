@@ -1,14 +1,22 @@
 
 function format(a) {
     if (a <= 9) {
-        return "0" + a 
+        return "0" + a; 
     }else{
-        return a
+        return a;
     }
 }
 
 function timeToString(elem){
-    let timeString = elem.getHours() +":" + format(elem.getMinutes()) + ":" + format(elem.getSeconds());
+    let timeString = format(elem.getHours()) +":" + format(elem.getMinutes()) + ":" + format(elem.getSeconds());
+    //AM PM functionality
+    let ampm = "";
+    if(elem.getHours()>= 0 || elem.getHours() <=11 ){
+        ampm = "AM";
+    }else{
+        ampm = "PM";
+    }
+    timeString = timeString + " " + ampm;
     return timeString;
 }
 
@@ -37,7 +45,7 @@ function addStopWatch(){
     let h = 0, m = 0, s = 0;
     let stopped = false;
 
-    let timeString = h +":" + format(m) + ":" + format(s);
+    let timeString = format(h) +":" + format(m) + ":" + format(s);
     let newDiv = document.createElement("div");
     let newLabel = document.createElement("label");
     //create a stop button
