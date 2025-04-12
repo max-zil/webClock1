@@ -3,6 +3,7 @@
 
 # ignore ALL files in ANY directory named temp
 temp/
-
+node_modules/
 #ignore test file
 test1.txt
+

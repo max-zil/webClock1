@@ -11,7 +11,13 @@
     <h1>Clock:</h1>
     <h2 id="clock">00:12</h2>
     <label>Add timer</label>
-    <button id="addTimerBtn">+</button>
+    <div class="dropdown">
+      <button id="addTimerBtn">+</button>
+      <div id="timerDropdown" class="dropdown-content">Choose an option:
+        <a href="#" id="stopwatchOption">Stopwatch</a>
+        <a href="#" id="timezoneOption">Timezone Clock</a>
+    </div>
+  </div>
     <script src="script.js"></script>
   </body>
 </html>

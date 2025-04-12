@@ -21,11 +21,16 @@ function updateClock(){
 
 
 //add event listeners to buttons
-const element = document.getElementById("addTimerBtn");
-element.addEventListener("click", addTimer);
+const element1 = document.getElementById("stopwatchOption");
+element1.addEventListener("click", addStopWatch);
+const element2 = document.getElementById("timezoneOption");
+element2.addEventListener("click", myFunction);
 //global labelID - Counter of number of created timers
 let labelID = 0;
-function addTimer(){
+function myFunction(){
+    alert("Implementing");
+}
+function addStopWatch(){
     //new timer - increment timer counter
     labelID++;
     let myTimeout;
@@ -47,7 +52,6 @@ function addTimer(){
     resumeBtn.style.display = "none";
 
     stopBtn.addEventListener("click",function(){
-        alert("Timer Stopped");
         stopped = true;
         stopBtn.style.display = 'none';
         resumeBtn.style.display = 'inline';
