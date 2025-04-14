@@ -11,7 +11,7 @@ function timeToString(elem){
     let timeString = format(elem.getHours()) +":" + format(elem.getMinutes()) + ":" + format(elem.getSeconds());
     //AM PM functionality
     let ampm = "";
-    if(elem.getHours()>= 0 || elem.getHours() <=11 ){
+    if(elem.getHours()>= 0 && elem.getHours() <=11 ){
         ampm = "AM";
     }else{
         ampm = "PM";
