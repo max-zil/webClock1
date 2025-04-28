@@ -192,43 +192,30 @@ function isDST(timeZone) {
     return currentOffset !== standardOffset;
 }
   
-console.log(isDST("Asia/Jerusalem")); // true if DST is active in Tel Aviv
-  
-
 function displayData(dataArr){
     cntr = 0;
     //clean aray 
     const timezoneArr = dataArr.map((x) => x[0].replaceAll(/["\/]/g, " "));
-    console.log("clean: " + timezoneArr);
     timezoneArr.forEach((item) =>{
         const timezoneDiv = document.createElement("div");
         timezoneDiv.id = "timezoneDiv" + cntr;
         cntr++;
-        console.log(item);
         timezoneDiv.innerText = "" + item;
         timezoneDiv.classList.add("data-display");
         const timeDiv = document.createElement("div");
         let timezoneID = "time-display" + "-" + item.trim().replaceAll(" ","-");
-        console.log("id is: "+timezoneID);
         timeDiv.id = timezoneID;
         timeDiv.classList.add("time-display");
         timezoneDiv.appendChild(timeDiv);
         document.body.appendChild(timezoneDiv);
-        
-        
-        
-        ////////////////////////////////
-        
-        
     });
     getTimeTimezones(dataArr);
 }
+
 function getTimeTimezones(dataArr){
     dataArr.forEach((item) =>{
         timezoneID = "time-display" + "-" + item[0].replaceAll(/["\/]/g, " ").trim().replaceAll(" ","-");
-        console.log("Katy perry: "+ timezoneID)
         const timeDiv = document.getElementById(timezoneID);
-        console.log(timeDiv);
         const now = new Date();
 
         // Get time in Africa/Abidjan time zone as a string
@@ -265,9 +252,7 @@ function getTimeTimezones(dataArr){
         if(timeReq >= 24){
             timeReq = timeReq - 24;
         }
-        console.log("timeReq is: "+timeReq);
         timeStr =  padTimeString(timeReq) +":" + padTimeString(abidjanDate.getMinutes()) + ":" + padTimeString(abidjanDate.getSeconds());
-        console.log(timeStr);
         timeDiv.innerText = timeStr;
         document.body.appendChild(timeDiv);
         setTimeout(() => getTimeTimezones(dataArr), 1000);
