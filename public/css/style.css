@@ -43,6 +43,28 @@ div {
   .dropdown:hover .dropdown-content {
     display: block;
   }
+
+.data-display {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 5px 0;
+    font-family: Arial, sans-serif;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.data-display:hover {
+    background-color: #e0e0e0;
+}
+.time-display {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 5px 0;
+  font-family: Arial, sans-serif;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
 /*
 .button-24 {
   
