@@ -31,12 +31,10 @@ function updateClock(){
 const element1 = document.getElementById("stopwatchOption");
 element1.addEventListener("click", addStopWatch);
 const element2 = document.getElementById("timezoneOption");
-element2.addEventListener("click", myFunction);
+element2.addEventListener("click", getCSV);
 //global labelID - Counter of number of created timers
 let labelID = 0;
-function myFunction(){
-    alert("Implementing");
-}
+
 function addStopWatch(){
     //new timer - increment timer counter
     labelID++;
@@ -45,7 +43,7 @@ function addStopWatch(){
     let stopped = false;
 
     let timeString = padTimeString(h) +":" + padTimeString(m) + ":" + padTimeString(s);
-    let timezoneDiv = document.createElement("div");
+    let timezoneLabel = document.createElement("div");
     let newLabel = document.createElement("label");
     //create a stop button
     let stopBtn = document.createElement("button");
@@ -78,10 +76,10 @@ function addStopWatch(){
     newLabel.id = labelString;
     newLabel.innerText = timeString;
     //###Append elements
-    timezoneDiv.appendChild(newLabel);
-    timezoneDiv.appendChild(stopBtn);
-    timezoneDiv.appendChild(resumeBtn);
-    document.getElementById("origin").appendChild(timezoneDiv);
+    timezoneLabel.appendChild(newLabel);
+    timezoneLabel.appendChild(stopBtn);
+    timezoneLabel.appendChild(resumeBtn);
+    document.getElementById("origin").appendChild(timezoneLabel);
     
     function updateTimer(){
         if(stopped){
@@ -193,26 +191,42 @@ function isDST(timeZone) {
 }
   
 function displayData(dataArr){
+    let intervalSet = false;
     cntr = 0;
     //clean aray 
     const timezoneArr = dataArr.map((x) => x[0].replaceAll(/["\/]/g, " "));
     timezoneArr.forEach((item) =>{
         const timezoneDiv = document.createElement("div");
-        timezoneDiv.id = "timezoneDiv" + cntr;
+        const timezoneLabel = document.createElement("label");
+        timezoneLabel.id = "timezoneLabel" + cntr;
         cntr++;
-        timezoneDiv.innerText = "" + item;
+        timezoneLabel.innerText = "" + item;
         timezoneDiv.classList.add("data-display");
         const timeDiv = document.createElement("div");
         let timezoneID = "time-display" + "-" + item.trim().replaceAll(" ","-");
         timeDiv.id = timezoneID;
         timeDiv.classList.add("time-display");
         timezoneDiv.appendChild(timeDiv);
+        timezoneDiv.appendChild(timezoneLabel);
+        timezoneDiv.addEventListener("click",() => {
+            if(timeDiv.style.display === "none" || timeDiv.style.display === ""){
+                timeDiv.style.display = "block";
+            }else{
+                timeDiv.style.display = "none";
+            }
+            
+        });
         document.body.appendChild(timezoneDiv);
     });
-    getTimeTimezones(dataArr);
+    //getTimeTimezones(dataArr);
+    if(!intervalSet){
+        setInterval(() => getTimeTimezones(dataArr), 1000);
+        intervalSet = true;
+    }
 }
 
 function getTimeTimezones(dataArr){
+    
     dataArr.forEach((item) =>{
         timezoneID = "time-display" + "-" + item[0].replaceAll(/["\/]/g, " ").trim().replaceAll(" ","-");
         const timeDiv = document.getElementById(timezoneID);
@@ -242,7 +256,6 @@ function getTimeTimezones(dataArr){
         let offset = Number(test/(60*60));
         if(offset < 0 && Number(abidjanDate.getHours()) < Math.abs(offset)){
             timeReq = Number(abidjanDate.getHours()) + offset;
-            console.log("Nicki: " + timeReq)
             timeReq = 24 + timeReq;
 
         }else{
@@ -255,7 +268,8 @@ function getTimeTimezones(dataArr){
         timeStr =  padTimeString(timeReq) +":" + padTimeString(abidjanDate.getMinutes()) + ":" + padTimeString(abidjanDate.getSeconds());
         timeDiv.innerText = timeStr;
         document.body.appendChild(timeDiv);
-        setTimeout(() => getTimeTimezones(dataArr), 1000);
-
+        //setTimeout(() => getTimeTimezones(dataArr), 1000);
+        
     });
+    
 }

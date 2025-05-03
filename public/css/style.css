@@ -57,6 +57,7 @@ div {
     background-color: #e0e0e0;
 }
 .time-display {
+  display: none;
   background-color: #f4f4f4;
   border: 1px solid #ddd;
   padding: 10px;
@@ -64,6 +65,10 @@ div {
   font-family: Arial, sans-serif;
   border-radius: 5px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.data-display:hover .time-display{
+  display: block;
+  
 }
 /*
 .button-24 {
